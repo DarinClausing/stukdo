@@ -3,9 +3,9 @@ Stukdo::Application.routes.draw do
   resources :tasks do
     member do
       put :change
-   end
+    end
   end
-  
+ 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -13,6 +13,7 @@ Stukdo::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#home'
   get 'about' => "pages#about"
+  get 'test' => "pages#test"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
