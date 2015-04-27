@@ -17,7 +17,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    respond_with(@task)
+    respond_with(@tasks)
   end
 
   def edit
@@ -26,12 +26,17 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
     @task.save
-    respond_with(@task)
+        respond_to do |format|
+      format.html {redirect_to tasks_path, notice: "Task Created"}
+    end
+
   end
 
   def update
     @task.update(task_params)
-    respond_with(@task)
+    respond_to do |format|
+      format.html {redirect_to tasks_path, notice: "Task Update"}
+    end  
   end
 
   def destroy
@@ -53,4 +58,6 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:content, :state)
     end
+
+
 end
