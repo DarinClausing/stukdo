@@ -26,9 +26,8 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
     @task.save
-        respond_to do |format|
-      format.html {redirect_to tasks_path, notice: "Task Created"}
-    end
+        respond_with(@task)
+  
 
   end
 
